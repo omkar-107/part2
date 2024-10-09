@@ -99,7 +99,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8']
 
 export  function UniversityDashboard() {
   const [selectedDepartment, setSelectedDepartment] = useState("All")
-  const [selectedEntity, setSelectedEntity] = useState(null)
+  const [selectedEntity, setSelectedEntity] = useState<any>(null)
 
   const filteredCourses = selectedDepartment === "All" 
     ? courseData 
@@ -522,7 +522,7 @@ export  function UniversityDashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={timeSlotData.map(ts => ({
                   ...ts,
-                  duration: (new Date(`2000-01-01T${ts.endTime}:00`) - new Date(`2000-01-01T${ts.startTime}:00`)) / 60000
+                  duration: (Number(new Date(`2000-01-01T${ts.endTime}:00`)) - Number(new Date(`2000-01-01T${ts.startTime}:00`))) / 60000
                 }))}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="id" />
